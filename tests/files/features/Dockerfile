@@ -4,7 +4,7 @@ FROM ${UPSTREAM_REPO:-testlagoon}/node-10-builder:${UPSTREAM_TAG:-latest} as bui
 COPY package.json yarn.lock /app/
 RUN yarn install
 
-FROM ${UPSTREAM_REPO:-testlagoon}/node-10:${UPSTREAM_TAG:-latest}
+FROM ${UPSTREAM_REPO:-testlagoon}/node-10:${UPSTREAM_TAG:-non-root-cron}
 COPY --from=builder /app/node_modules /app/node_modules
 COPY . /app/
 
